@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 const Posts = ({ posts }) => (
   <div>
     <Helmet>
-      <title>Poster</title>
+      <title>Post</title>
     </Helmet>
     <h1>Posts Page</h1>
     <ul>
