@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const config = require("./webpack.config");
 
 module.exports = {
-  devtool: "eval", // use cheap-eval-source-map for slower builds but better debugging
+  devtool: "#eval-source-map", // use cheap-eval-source-map for slower builds but better debugging
 
   entry: {
     app: [
@@ -15,7 +15,10 @@ module.exports = {
     ],
   },
 
-  resolve: config.resolve,
+  resolve: {
+    alias: { "react-dom": "@hot-loader/react-dom" },
+    ...config.resolve,
+  },
 
   output: config.output,
 
