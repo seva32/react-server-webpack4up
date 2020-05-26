@@ -22,7 +22,7 @@ module.exports = {
     libraryTarget: "commonjs",
   }),
 
-  externals: ["react-helmet"],
+  // externals: ["react-helmet"],
 
   plugins: [
     new MiniCssExtractPlugin({

@@ -8,7 +8,7 @@ const Posts = ({ posts }) => (
     <Helmet>
       <title>Posts Page</title>
     </Helmet>
-    <h1>Posts</h1>
+    <h1>Posts Page</h1>
     <ul>
       {posts.map((post) => (
         <li key={post.id}>{post.title}</li>
