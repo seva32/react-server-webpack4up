@@ -1,4 +1,3 @@
-/* eslint-disable react/forbid-prop-types */
 import React from "react";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet-async";
@@ -7,9 +6,9 @@ import { connect } from "react-redux";
 const Posts = ({ posts }) => (
   <div>
     <Helmet>
-      <title>Posts</title>
+      <title>Posts Page</title>
     </Helmet>
-    <h1>Posts</h1>
+    <h1>Posts Page</h1>
     <ul>
       {posts.map((post) => (
         <li key={post.id}>{post.title}</li>
