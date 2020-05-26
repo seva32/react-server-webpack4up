@@ -1,8 +1,14 @@
 {
-  "presets": [["es2015", { "modules": false }], "stage-0", "react"],
+  "presets": [
+    ["@babel/preset-env", { "modules": false }],
+    "@babel/preset-react"
+  ],
   "env": {
     "development": {
-      "plugins": ["transform-react-jsx-source"]
+      "plugins": [
+        "@babel/plugin-transform-react-jsx-source",
+        "@babel/plugin-proposal-function-bind"
+      ]
     }
   }
 }

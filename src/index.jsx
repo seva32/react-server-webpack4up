@@ -4,6 +4,7 @@ import { AppContainer } from "react-hot-loader";
 import { BrowserRouter } from "react-router-dom";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
+import { HelmetProvider } from "react-helmet-async";
 
 import App from "./common/App/App";
 import rootReducer from "./common/rootReducer";
@@ -14,12 +15,14 @@ function render(Root) {
   ReactDOM.hydrate(
     <AppContainer>
       <Provider store={store}>
-        <BrowserRouter>
-          <Root />
-        </BrowserRouter>
+        <HelmetProvider>
+          <BrowserRouter>
+            <Root />
+          </BrowserRouter>
+        </HelmetProvider>
       </Provider>
     </AppContainer>,
-    document.getElementById("root"),
+    document.getElementById("root")
   );
 }
 
