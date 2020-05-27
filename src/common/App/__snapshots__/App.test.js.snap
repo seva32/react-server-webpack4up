@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App/> renders correctly enzyme 1`] = `
+<Fragment>
+  <Navigation />
+  <Switch>
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/"
+    />
+    <Route
+      component={
+        Object {
+          "$$typeof": Symbol(react.memo),
+          "WrappedComponent": [Function],
+          "compare": null,
+          "displayName": "Connect(Posts)",
+          "type": [Function],
+        }
+      }
+      path="/posts"
+    />
+    <RedirectWithStatus
+      from="/home"
+      status={301}
+      to="/"
+    />
+    <Route
+      component={[Function]}
+    />
+  </Switch>
+</Fragment>
+`;

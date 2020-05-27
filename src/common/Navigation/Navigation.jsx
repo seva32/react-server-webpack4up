@@ -1,15 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { List } from "semantic-ui-react";
 
 const Navigation = () => (
-  <ul>
-    <li>
-      <Link to="/">Home</Link>
-    </li>
-    <li>
-      <Link to="/posts">Posts</Link>
-    </li>
-  </ul>
+  <List link>
+    <List.Item as={NavLink} exact to="/">
+      Home
+    </List.Item>
+    <List.Item as={NavLink} exact to="/posts">
+      Posts
+    </List.Item>
+  </List>
 );
 
 export default Navigation;
