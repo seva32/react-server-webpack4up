@@ -1,4 +1,3 @@
-/* eslint-disable comma-dangle */
 /* eslint-disable no-underscore-dangle */
 import { AppContainer } from "react-hot-loader";
 import React from "react";

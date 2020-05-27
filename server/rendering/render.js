@@ -1,4 +1,5 @@
 const fs = require("fs");
+// eslint-disable-next-line import/no-extraneous-dependencies
 const path = require("path");
 require("@babel/register");
 const React = require("react");
@@ -44,7 +45,7 @@ function render(req, res, preloadedState) {
         { store },
         React.createElement(
           StaticRouter,
-          { location: req.url, context: context },
+          { location: req.url, context },
           React.createElement(App)
         )
       )
@@ -54,8 +55,12 @@ function render(req, res, preloadedState) {
   const { helmet } = helmetContext;
 
   const html = template
+    // eslint-disable-next-line quotes
     .replace('<div id="root"></div>', `<div id="root">${body}</div>`)
-    .replace("</head>", `${helmet.title.toString()}</head>`)
+    .replace(
+      "</head>",
+      `${helmet.title.toString() + helmet.link.toString()}</head>`
+    )
     .replace(
       "</head>",
       `<script>window.__PRELOADED_STATE__=${JSON.stringify(
