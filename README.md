@@ -1,9 +1,7 @@
-Usage
-
 npm start
 
-npm run start:dashboard
+npm run dev
 
-npm run build
+npm run call
 
-npm run build:server
+npm run postinstall
