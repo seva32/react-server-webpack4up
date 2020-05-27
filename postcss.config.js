@@ -2,7 +2,12 @@ module.exports = {
   plugins: [
     require("postcss-import")(),
     require("postcss-url")(),
-    require("postcss-cssnext")(),
+    require("postcss-preset-env")({
+      stage: 3,
+      features: {
+        "nesting-rules": true,
+      },
+    }),
     require("postcss-nested")(),
     require("postcss-browser-reporter")(),
     require("postcss-reporter")(),

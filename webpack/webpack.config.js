@@ -1,6 +1,7 @@
 require("dotenv").config({ silent: true });
 
 const webpack = require("webpack");
+// eslint-disable-next-line import/no-extraneous-dependencies
 const path = require("path");
 
 module.exports = {
@@ -29,6 +30,12 @@ module.exports = {
   ],
 
   module: {
-    rules: [{ test: /\.jsx?$/, exclude: /node_modules/, use: "babel-loader" }],
+    rules: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: ["babel-loader", "eslint-loader"],
+      },
+    ],
   },
 };

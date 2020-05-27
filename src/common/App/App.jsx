@@ -14,11 +14,7 @@ const App = () => (
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/posts" component={Posts} />
-      <RedirectWithStatus
-        status={301}
-        from={"/home"}
-        to={"/"}
-      />
+      <RedirectWithStatus status={301} from="/home" to="/" />
       <Route component={NotFound} />
     </Switch>
   </div>

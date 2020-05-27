@@ -1,7 +1,8 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
-const config = require("./webpack.config");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const config = require("./webpack.config");
 
 const devMode = process.env.NODE_ENV !== "production";
 

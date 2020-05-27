@@ -1,3 +1,4 @@
+/* eslint-disable arrow-parens */
 import React from "react";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet-async";
@@ -6,9 +7,9 @@ import { connect } from "react-redux";
 const Posts = ({ posts }) => (
   <div>
     <Helmet>
-      <title>Post</title>
+      <title>Posters</title>
     </Helmet>
-    <h1>Posts</h1>
+    <h1>Posters</h1>
     <ul>
       {posts.map((post) => (
         <li key={post.id}>{post.title}</li>
@@ -18,6 +19,7 @@ const Posts = ({ posts }) => (
 );
 
 Posts.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
   posts: PropTypes.array.isRequired,
 };
 
