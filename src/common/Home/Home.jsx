@@ -5,7 +5,7 @@ import "./home.css";
 const Home = () => (
   <div>
     <Helmet>
-      <title>Home Page</title>
+      <title>Home</title>
       <link rel="canonical" href="https://www.tacobell.com/" />
     </Helmet>
     <h1>Home</h1>

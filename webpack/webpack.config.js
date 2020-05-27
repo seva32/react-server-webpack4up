@@ -6,6 +6,7 @@ const path = require("path");
 
 module.exports = {
   entry: {
+    vendor: ["semantic-ui-react"],
     app: [path.resolve("src/index.jsx")],
   },
 
