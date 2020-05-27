@@ -55,7 +55,6 @@ function render(req, res, preloadedState) {
   const { helmet } = helmetContext;
 
   const html = template
-    // eslint-disable-next-line quotes
     .replace('<div id="root"></div>', `<div id="root">${body}</div>`)
     .replace(
       "</head>",

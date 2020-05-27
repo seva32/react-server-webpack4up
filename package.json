@@ -44,13 +44,7 @@
   "dependencies": {
     "babel-jest": "^26.0.1",
     "dotenv": "^8.2.0",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.2",
-    "enzyme-to-json": "^3.5.0",
     "express": "^4.17.1",
-    "file-loader": "^6.0.0",
-    "jest": "^26.0.1",
-    "jest-cli": "^26.0.1",
     "morgan": "^1.10.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.0",
@@ -78,6 +72,12 @@
     "compression": "^1.7.4",
     "css-loader": "^3.5.3",
     "cssnano": "^4.1.10",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "enzyme-to-json": "^3.5.0",
+    "file-loader": "^6.0.0",
+    "jest": "^26.0.1",
+    "jest-cli": "^26.0.1",
     "eslint": "^7.1.0",
     "eslint-config-airbnb": "18.1.0",
     "eslint-import-resolver-webpack": "^0.8.3",
@@ -85,6 +85,7 @@
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jest": "^23.13.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "2.5.0",
     "html-webpack-plugin": "^4.3.0",
@@ -106,5 +107,17 @@
   },
   "optionalDependencies": {
     "fsevents": "*"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

@@ -11,14 +11,27 @@
       "jsx": true
     }
   },
-  "plugins": ["react", "jest"],
+  "plugins": ["react", "jest", "prettier"],
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "jest": true
   },
   "rules": {
     "max-len": [1, 80, 2, { "ignoreComments": true }],
-    "quotes": ["error", "double"],
+    "quotes": [
+      "error",
+      "double",
+      {
+        "avoidEscape": true
+      }
+    ],
+    "object-curly-newline": [
+      "error",
+      {
+        "multiline": true
+      }
+    ],
     "no-unused-vars": [
       "error",
       { "vars": "local", "args": "after-used", "argsIgnorePattern": "^_" }
@@ -29,6 +42,30 @@
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
     "import/prefer-default-export": "off",
-    "comma-dangle": "off"
+    "comma-dangle": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true,
+        "optionalDependencies": false,
+        "peerDependencies": false
+      }
+    ],
+    "prettier/prettier": [
+      "off",
+      {
+        "singleQuote": false
+      }
+    ],
+    "jsx-a11y/click-events-have-key-events": 0,
+    "jsx-a11y/anchor-is-valid": 0,
+    "no-await-in-loop": 0,
+    "no-unused-expressions": [
+      "error",
+      {
+        "allowShortCircuit": true,
+        "allowTernary": true
+      }
+    ]
   }
 }
