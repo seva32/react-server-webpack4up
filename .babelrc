@@ -6,9 +6,22 @@
   "env": {
     "development": {
       "plugins": [
+        "@babel/plugin-syntax-dynamic-import",
         "@babel/plugin-transform-react-jsx-source",
         "@babel/plugin-proposal-function-bind",
         "react-hot-loader/babel"
+      ]
+    },
+    "test": {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "targets": {
+              "node": "current"
+            }
+          }
+        ]
       ]
     }
   }

@@ -37,6 +37,35 @@ module.exports = {
         exclude: /node_modules/,
         use: ["babel-loader", "eslint-loader"],
       },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              outputPath: "images",
+            },
+          },
+        ],
+      },
     ],
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        styles: {
+          name: "styles",
+          test: /\.css$/,
+          chunks: "all",
+          enforce: true,
+        },
+        vendor: {
+          chunks: "initial",
+          test: "vendor",
+          name: "vendor",
+          enforce: true,
+        },
+      },
+    },
   },
 };

@@ -11,9 +11,9 @@ const Posts = ({ posts }) => {
   return (
     <div>
       <Helmet>
-        <title>Posters</title>
+        <title>Post</title>
       </Helmet>
-      <h1>Posters</h1>
+      <h1>Posts</h1>
       <List>
         {posts.map((post) => (
           <List.Item key={post.id}>

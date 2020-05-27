@@ -1,7 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const path = require("path");
-const config = require("./webpack.config");
-
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const config = require("./webpack.config");
 
 const devMode = process.env.NODE_ENV !== "production";
 
@@ -17,10 +17,11 @@ module.exports = {
 
   resolve: config.resolve,
 
-  output: Object.assign({}, config.output, {
+  output: {
+    ...config.output,
     filename: "[name].server.js",
     libraryTarget: "commonjs",
-  }),
+  },
 
   // externals: ["react-helmet"],
 
@@ -43,7 +44,7 @@ module.exports = {
               hmr: process.env.NODE_ENV === "development",
             },
           },
-          "css-loader",
+          { loader: "css-loader", options: { importLoaders: 1 } },
           "postcss-loader",
         ],
       },

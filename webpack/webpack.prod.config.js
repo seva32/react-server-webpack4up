@@ -44,7 +44,15 @@ module.exports = {
               hmr: process.env.NODE_ENV === "development",
             },
           },
-          "css-loader",
+          {
+            loader: "css-loader",
+            options: {
+              modules: true,
+              importLoaders: 1,
+              localsConvention: "camelCase",
+              sourceMap: true,
+            },
+          },
           "postcss-loader",
         ],
       },

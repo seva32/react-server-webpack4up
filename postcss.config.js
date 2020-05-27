@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 module.exports = {
   plugins: [
     require("postcss-import")(),
@@ -7,6 +8,9 @@ module.exports = {
       features: {
         "nesting-rules": true,
       },
+    }),
+    require("cssnano")({
+      preset: "default",
     }),
     require("postcss-nested")(),
     require("postcss-browser-reporter")(),

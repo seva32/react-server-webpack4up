@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const webpack = require("webpack");
 const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
@@ -5,7 +6,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const config = require("./webpack.config");
 
 module.exports = {
-  devtool: "#eval-source-map", // use cheap-eval-source-map for slower builds but better debugging
+  devtool: "inline-source-map",
 
   entry: {
     app: [
@@ -16,7 +17,11 @@ module.exports = {
   },
 
   resolve: {
-    alias: { "react-dom": "@hot-loader/react-dom" },
+    alias: {
+      "react-dom": "@hot-loader/react-dom",
+      "babel-plugin-syntax-dynamic-import":
+        "@babel/plugin-syntax-dynamic-import",
+    },
     ...config.resolve,
   },
 
@@ -57,7 +62,14 @@ module.exports = {
               reloadAll: true,
             },
           },
-          "css-loader",
+          {
+            loader: "css-loader",
+            options: {
+              modules: true,
+              localsConvention: "camelCase",
+              sourceMap: true,
+            },
+          },
         ],
       },
       ...config.module.rules,
