@@ -9,8 +9,8 @@ module.exports = {
   devtool: "#eval-source-map",
 
   entry: {
-    app: path.resolve("src/common/App/App"),
-    rootReducer: path.resolve("src/common/rootReducer"),
+    app: path.resolve("src/App"),
+    rootReducer: path.resolve("src/components/rootReducer"),
   },
 
   mode: "none",
@@ -23,7 +23,7 @@ module.exports = {
     libraryTarget: "commonjs",
   },
 
-  // externals: ["react-helmet"],
+  externals: ["react-helmet-async"],
 
   plugins: [
     new MiniCssExtractPlugin({
