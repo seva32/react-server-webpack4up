@@ -5,25 +5,26 @@ import PropTypes from "prop-types";
 import { Helmet } from "react-helmet-async";
 import { connect } from "react-redux";
 import { List } from "semantic-ui-react";
+import * as Styles from "./Posts.style";
 
 const Posts = ({ posts }) => {
   const [name, setName] = useState("Condition");
   return (
     <div>
       <Helmet>
-        <title>Postre</title>
+        <title>Pos</title>
       </Helmet>
-      <h1>Posts</h1>
+      <h1>Posters</h1>
       <List>
         {posts.map((post) => (
           <List.Item key={post.id}>
-            <List.Header>{post.title}</List.Header>A lovely fucker
+            <List.Header>{post.title}</List.Header>A lovely luck
           </List.Item>
         ))}
       </List>
-      <button type="button" onClick={() => setName("None")}>
+      <Styles.StyledButton type="button" onClick={() => setName("None")}>
         {name}
-      </button>
+      </Styles.StyledButton>
     </div>
   );
 };

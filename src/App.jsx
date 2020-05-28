@@ -1,11 +1,11 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 
-import Navigation from "../Navigation/Navigation";
-import Home from "../Home/Home";
-import Posts from "../../posts/Posts";
-import NotFound from "../NotFound/NotFound";
-import RedirectWithStatus from "../RedirectWithStatus/RedirectWithStatus";
+import Navigation from "./domain/Navigation/Navigation";
+import { Home } from "./domain/Home";
+import { Posts } from "./domain/Posts";
+import NotFound from "./domain/NotFound/NotFound";
+import RedirectWithStatus from "./domain/RedirectWithStatus/RedirectWithStatus";
 
 const App = () => (
   <>
