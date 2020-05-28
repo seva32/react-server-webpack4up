@@ -36,7 +36,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(sa|sc|c)ss$/,
+        test: /\.module\.s(a|c)ss$/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
@@ -46,6 +46,22 @@ module.exports = {
           },
           { loader: "css-loader", options: { importLoaders: 1 } },
           "postcss-loader",
+          "sass-loader",
+        ],
+      },
+      {
+        test: /\.(sa|sc|c)ss$/,
+        exclude: /\.module.(s(a|c)ss)$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: process.env.NODE_ENV === "development",
+            },
+          },
+          { loader: "css-loader", options: { importLoaders: 1 } },
+          "postcss-loader",
+          "sass-loader",
         ],
       },
       ...config.module.rules,

@@ -18,7 +18,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: [".js", ".jsx", ".scss"],
   },
 
   plugins: [
@@ -38,12 +38,23 @@ module.exports = {
         use: ["babel-loader", "eslint-loader"],
       },
       {
-        test: /\.(png|jpe?g|gif)$/i,
+        test: /\.(png|jpe?g|gif|svg)$/,
         use: [
           {
             loader: "file-loader",
             options: {
               outputPath: "images",
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(woff|woff2|ttf|otf|eot)$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              outputPath: "fonts",
             },
           },
         ],

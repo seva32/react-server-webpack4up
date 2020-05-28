@@ -51,7 +51,7 @@ module.exports = {
         use: "react-hot-loader/webpack",
       },
       {
-        test: /\.css$/,
+        test: /\.module\.s(a|c)ss$/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
@@ -67,6 +67,39 @@ module.exports = {
             options: {
               modules: true,
               localsConvention: "camelCase",
+              sourceMap: true,
+            },
+          },
+          {
+            loader: "sass-loader",
+            options: {
+              sourceMap: true,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.s(a|c)ss$/,
+        exclude: /\.module.(s(a|c)ss)$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: process.env.NODE_ENV === "development",
+              reloadAll: true,
+            },
+          },
+          {
+            loader: "css-loader",
+            options: {
+              modules: true,
+              localsConvention: "camelCase",
+              sourceMap: true,
+            },
+          },
+          {
+            loader: "sass-loader",
+            options: {
               sourceMap: true,
             },
           },

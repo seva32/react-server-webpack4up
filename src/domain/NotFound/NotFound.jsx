@@ -1,11 +1,11 @@
 import React from "react";
 import Status from "../Status/Status";
+import imgPath from "../../assets/images/notfound.png";
+import * as Styles from "./NotFound.style";
 
 const NotFound = () => (
   <Status status={404}>
-    <div>
-      <h1>Not Found</h1>
-    </div>
+    <Styles.StyledContainer img={imgPath} />
   </Status>
 );
 

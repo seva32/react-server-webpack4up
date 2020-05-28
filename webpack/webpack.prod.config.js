@@ -36,7 +36,32 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.module\.s(a|c)ss$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          {
+            loader: "css-loader",
+            options: {
+              modules: true,
+              importLoaders: 1,
+              localsConvention: "camelCase",
+              sourceMap: false,
+            },
+          },
+          "postcss-loader",
+          {
+            loader: "sass-loader",
+            options: {
+              sourceMap: false,
+            },
+          },
+        ],
+      },
+      {
         test: /\.(sa|sc|c)ss$/,
+        exclude: /\.module.(s(a|c)ss)$/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
@@ -50,10 +75,16 @@ module.exports = {
               modules: true,
               importLoaders: 1,
               localsConvention: "camelCase",
-              sourceMap: true,
+              sourceMap: false,
             },
           },
           "postcss-loader",
+          {
+            loader: "sass-loader",
+            options: {
+              sourceMap: false,
+            },
+          },
         ],
       },
       ...config.module.rules,

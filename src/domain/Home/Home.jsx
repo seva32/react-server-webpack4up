@@ -1,6 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
-import "./home.css";
+import styles from "./home.scss";
 
 const Home = () => (
   <div>
@@ -8,7 +8,7 @@ const Home = () => (
       <title>Home</title>
       <link rel="canonical" href="https://www.tacobell.com/" />
     </Helmet>
-    <h1>Home</h1>
+    <h1 className={styles.red}>Home</h1>
   </div>
 );
 
