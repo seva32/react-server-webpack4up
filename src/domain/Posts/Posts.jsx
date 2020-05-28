@@ -12,13 +12,13 @@ const Posts = ({ posts }) => {
   return (
     <div>
       <Helmet>
-        <title>Post</title>
+        <title>Pos</title>
       </Helmet>
       <h1>Posters</h1>
       <List>
         {posts.map((post) => (
           <List.Item key={post.id}>
-            <List.Header>{post.title}</List.Header>A lovely fucker
+            <List.Header>{post.title}</List.Header>A lovely luck
           </List.Item>
         ))}
       </List>
