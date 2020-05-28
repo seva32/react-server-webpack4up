@@ -10,7 +10,7 @@ module.exports = {
 
   entry: {
     app: path.resolve("src/App"),
-    rootReducer: path.resolve("src/components/rootReducer"),
+    rootReducer: path.resolve("src/reducers/index"),
   },
 
   mode: "none",

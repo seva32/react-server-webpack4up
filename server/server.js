@@ -1,6 +1,7 @@
 require("dotenv").config({ silent: true });
 
 const express = require("express");
+const cookiesMiddleware = require("universal-cookie-express");
 const compression = require("compression");
 const logger = require("./middleware/logger");
 const { devMiddleware, hotMiddleware } = require("./middleware/webpack");
@@ -25,16 +26,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(hotMiddleware);
 }
 
-// const POSTS = [
-//   { id: 1, title: "Post 1" },
-//   { id: 2, title: "Post 2" },
-// ];
-
-// app.get("/posts", (req, res) => {
-//   const posts = { list: POSTS };
-
-//   render(req, res, { posts });
-// });
+app.use(cookiesMiddleware());
 
 app.get("*", (req, res) => {
   render(req, res, {});

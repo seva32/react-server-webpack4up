@@ -3,17 +3,16 @@ import { AppContainer } from "react-hot-loader";
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-import { createStore } from "redux";
 import { Provider } from "react-redux";
 import { HelmetProvider } from "react-helmet-async";
 import { ThemeProvider } from "styled-components";
+import { CookiesProvider } from "react-cookie";
 
 import App from "./App";
-import rootReducer from "./components/rootReducer";
+import store from "./store";
+import rootReducer from "./reducers";
 import { theme } from "./utils/styles/theme";
 import { GlobalStyle } from "./utils/styles/global";
-
-const store = createStore(rootReducer, window.__PRELOADED_STATE__);
 
 function render(Root) {
   ReactDOM.hydrate(
@@ -22,9 +21,11 @@ function render(Root) {
         <GlobalStyle />
         <Provider store={store}>
           <HelmetProvider>
-            <BrowserRouter>
-              <Root />
-            </BrowserRouter>
+            <CookiesProvider>
+              <BrowserRouter>
+                <Root />
+              </BrowserRouter>
+            </CookiesProvider>
           </HelmetProvider>
         </Provider>
       </ThemeProvider>
@@ -40,7 +41,7 @@ if (module.hot) {
     render(App);
   });
 
-  module.hot.accept("./components/rootReducer", () => {
+  module.hot.accept("./reducers/index.js", () => {
     store.replaceReducer(rootReducer);
   });
 }

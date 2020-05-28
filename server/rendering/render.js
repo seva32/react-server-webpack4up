@@ -7,6 +7,7 @@ const ReactDOMServer = require("react-dom/server");
 const { StaticRouter } = require("react-router-dom");
 const { createStore } = require("redux");
 const { Provider } = require("react-redux");
+const { CookiesProvider } = require("react-cookie");
 const { devMiddleware } = require("../middleware/webpack");
 const { appWrapp: HelmetProvider, helmetContext } = require("./helmet.jsx");
 
@@ -44,9 +45,13 @@ function render(req, res, preloadedState) {
         Provider,
         { store },
         React.createElement(
-          StaticRouter,
-          { location: req.url, context },
-          React.createElement(App)
+          CookiesProvider,
+          { cookies: req.universalCookies },
+          React.createElement(
+            StaticRouter,
+            { location: req.url, context },
+            React.createElement(App)
+          )
         )
       )
     )
