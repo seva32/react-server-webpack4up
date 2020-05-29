@@ -4,9 +4,14 @@ import React from "react";
 import { Helmet } from "react-helmet-async";
 import { useCookies } from "react-cookie";
 import styles from "./home.scss";
+import { useAppContext } from "../../context";
+import { FormUI } from "../../components";
+import * as Styles from "./Home.style";
 
 const Home = () => {
   const [cookies, setCookie] = useCookies(["name"]);
+
+  const appContext = useAppContext();
 
   function onClick(newName) {
     setCookie("name", newName, { path: "/" });
@@ -26,9 +31,20 @@ const Home = () => {
           type="button"
           onClick={() => onClick("Tett")}
         >
-          {cookies.name && `Hello ${cookies.name}!`}
+          {cookies.name ? `Hello ${cookies.name}!` : "Hello"}
         </button>
       </div>
+      <button
+        aria-label="ctx test"
+        id="button-id-ctx"
+        type="button"
+        onClick={() => appContext.appData.changeName("Seb")}
+      >
+        {appContext.appData.name}
+      </button>
+      <Styles.StyledContainer>
+        <FormUI />
+      </Styles.StyledContainer>
     </div>
   );
 };
