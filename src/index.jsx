@@ -13,6 +13,7 @@ import store from "./store";
 import rootReducer from "./reducers";
 import { theme } from "./utils/styles/theme";
 import { GlobalStyle } from "./utils/styles/global";
+import { AppProvider } from "./context";
 
 function render(Root) {
   ReactDOM.hydrate(
@@ -20,13 +21,15 @@ function render(Root) {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <Provider store={store}>
-          <HelmetProvider>
-            <CookiesProvider>
-              <BrowserRouter>
-                <Root />
-              </BrowserRouter>
-            </CookiesProvider>
-          </HelmetProvider>
+          <AppProvider>
+            <HelmetProvider>
+              <CookiesProvider>
+                <BrowserRouter>
+                  <Root />
+                </BrowserRouter>
+              </CookiesProvider>
+            </HelmetProvider>
+          </AppProvider>
         </Provider>
       </ThemeProvider>
     </AppContainer>,
