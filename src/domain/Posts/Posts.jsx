@@ -6,13 +6,15 @@ import { Helmet } from "react-helmet-async";
 import { connect } from "react-redux";
 import { List } from "semantic-ui-react";
 import * as Styles from "./Posts.style";
+import { Loader } from "../../components";
+import { Layout } from "../Layout";
 
 const Posts = ({ posts }) => {
   const [name, setName] = useState("Condition");
   return (
-    <div>
+    <Layout>
       <Helmet>
-        <title>Pos</title>
+        <title>Posts</title>
       </Helmet>
       <h1>Posters</h1>
       <List>
@@ -25,7 +27,8 @@ const Posts = ({ posts }) => {
       <Styles.StyledButton type="button" onClick={() => setName("None")}>
         {name}
       </Styles.StyledButton>
-    </div>
+      <Loader />
+    </Layout>
   );
 };
 
