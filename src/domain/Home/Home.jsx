@@ -5,6 +5,8 @@ import { Helmet } from "react-helmet-async";
 import { useCookies } from "react-cookie";
 import styles from "./home.scss";
 import { useAppContext } from "../../context";
+
+import { Layout } from "../Layout";
 import { FormUI } from "../../components";
 import * as Styles from "./Home.style";
 
@@ -18,7 +20,7 @@ const Home = () => {
   }
 
   return (
-    <div>
+    <Layout>
       <Helmet>
         <title>Home</title>
         <link rel="canonical" href="https://www.tacobell.com/" />
@@ -45,7 +47,7 @@ const Home = () => {
       <Styles.StyledContainer>
         <FormUI />
       </Styles.StyledContainer>
-    </div>
+    </Layout>
   );
 };
 
