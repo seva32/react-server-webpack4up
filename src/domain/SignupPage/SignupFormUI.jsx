@@ -13,10 +13,14 @@ import {
 } from "semantic-ui-react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import imagePath from "../../assets/images/logo192.png";
 import { Layout } from "../Layout";
+import * as actions from "../../actions";
 
-const SignupFormUI = () => {
+// eslint-disable-next-line react/prop-types
+const SignupFormUI = ({ errorMessage, signup, history }) => {
   const formik = useFormik({
     initialValues: {
       password: "",
@@ -39,8 +43,10 @@ const SignupFormUI = () => {
       }),
     }),
     onSubmit: (values, { setStatus, resetForm }) => {
-      // eslint-disable-next-line no-console
-      console.log(...Object.values(values));
+      signup(values, () => {
+        // eslint-disable-next-line react/prop-types
+        history.push("/");
+      });
       resetForm({});
       setStatus({ success: true });
     },
@@ -128,10 +134,24 @@ const SignupFormUI = () => {
           <Message>
             Already have an account? <Link to="/signin">Sign In</Link>
           </Message>
+          {errorMessage || "no hiciste error"}
         </Grid.Column>
       </Grid>
     </Layout>
   );
 };
 
-export default SignupFormUI;
+SignupFormUI.propTypes = {
+  errorMessage: PropTypes.string,
+  signup: PropTypes.func,
+};
+
+SignupFormUI.defaultProps = {
+  errorMessage: "",
+  signup: () => {},
+};
+
+export default connect(
+  ({ auth }) => ({ errorMessage: auth.errorMessage }),
+  actions
+)(SignupFormUI);

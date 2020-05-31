@@ -4,9 +4,11 @@ import { Route, Switch } from "react-router-dom";
 import { Home } from "./domain/Home";
 import { Posts } from "./domain/Posts";
 import NotFound from "./domain/NotFound/NotFound";
-import RedirectWithStatus from "./domain/RedirectWithStatus/RedirectWithStatus";
-import { LoginFormUI } from "./domain/LoginPage";
+// eslint-disable-next-line max-len
+import RedirectWithStatus from "./components/RedirectWithStatus/RedirectWithStatus";
+import { LoginFormUI } from "./domain/SigninPage";
 import { SignupFormUI } from "./domain/SignupPage";
+import Signout from "./domain/Signout/Signout";
 
 const App = () => (
   <>
@@ -14,7 +16,8 @@ const App = () => (
       <Route exact path="/" component={Home} />
       <Route exact path="/signin" component={LoginFormUI} />
       <Route exact path="/signup" component={SignupFormUI} />
-      <Route path="/posts" component={Posts} />
+      <Route exact path="/signout" component={Signout} />
+      <Route exact path="/posts" component={Posts} />
       <RedirectWithStatus status={301} from="/home" to="/" />
       <Route component={NotFound} />
     </Switch>
