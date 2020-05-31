@@ -1,5 +1,5 @@
 import React from "react";
-import Status from "../Status/Status";
+import Status from "../../components/Status/Status";
 import imgPath from "../../assets/images/notfound.png";
 import * as Styles from "./NotFound.style";
 

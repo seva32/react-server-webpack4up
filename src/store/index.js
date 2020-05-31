@@ -4,8 +4,13 @@ import reduxPromise from "redux-promise";
 import logger from "redux-logger";
 import reducers from "../reducers";
 
-// eslint-disable-next-line no-underscore-dangle
-const configureStore = (initialState = window.__PRELOADED_STATE__ || {}) => {
+const configureStore = (
+  initialState = {
+    // eslint-disable-next-line no-underscore-dangle
+    ...window.__PRELOADED_STATE__,
+    auth: { authenticated: localStorage.getItem("token") },
+  } || {}
+) => {
   const enhancer = compose(applyMiddleware(reduxPromise, reduxThunk, logger));
   return createStore(reducers, initialState, enhancer);
 };

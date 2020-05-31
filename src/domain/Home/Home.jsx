@@ -3,6 +3,7 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { useCookies } from "react-cookie";
+import { connect } from "react-redux";
 import styles from "./home.scss";
 import { useAppContext } from "../../context";
 
@@ -51,4 +52,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default connect(({ posts }) => ({ posts: posts.list }))(Home);

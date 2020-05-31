@@ -12,11 +12,15 @@ import {
   Segment,
 } from "semantic-ui-react";
 import { useFormik } from "formik";
+import { connect } from "react-redux";
 import * as Yup from "yup";
+import PropTypes from "prop-types";
 import imagePath from "../../assets/images/logo192.png";
 import { Layout } from "../Layout";
+import * as actions from "../../actions";
 
-const LoginForm = () => {
+// eslint-disable-next-line react/prop-types
+const LoginForm = ({ errorMessage, signin, history }) => {
   const formik = useFormik({
     initialValues: {
       password: "",
@@ -31,8 +35,10 @@ const LoginForm = () => {
         .matches(/[a-zA-Z]/, "Password can only contain Latin letters."),
     }),
     onSubmit: (values, { setStatus, resetForm }) => {
-      // eslint-disable-next-line no-console
-      console.log(...Object.values(values));
+      signin(values, () => {
+        // eslint-disable-next-line react/prop-types
+        history.push("/");
+      });
       resetForm({});
       setStatus({ success: true });
     },
@@ -92,7 +98,7 @@ const LoginForm = () => {
                 }
               />
 
-              <Button color="red" fluid size="large">
+              <Button color="red" fluid size="large" type="submit">
                 Login
               </Button>
             </Segment>
@@ -100,10 +106,24 @@ const LoginForm = () => {
           <Message>
             New to us? <Link to="/signup">Sign Up</Link>
           </Message>
+          {errorMessage || "no hay error"}
         </Grid.Column>
       </Grid>
     </Layout>
   );
 };
 
-export default LoginForm;
+LoginForm.propTypes = {
+  errorMessage: PropTypes.string,
+  signin: PropTypes.func,
+};
+
+LoginForm.defaultProps = {
+  errorMessage: "",
+  signin: () => {},
+};
+
+export default connect(
+  ({ auth }) => ({ errorMessage: auth.errorMessage }),
+  actions
+)(LoginForm);
